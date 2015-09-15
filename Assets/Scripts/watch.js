@@ -42,14 +42,11 @@ import System;
  }
  
 function Update () {
-
-
 	// Time app
  	var dt : System.DateTime = System.DateTime.Now;
  	var h : int = dt.Hour;
  	var m : int = dt.Minute;
  	var s : int = dt.Second;
- 	
  	
 	if(blink)
 		counter--;
@@ -73,12 +70,10 @@ function Update () {
          timeAMPM.text = System.DateTime.Now.ToString("tt");
      }
      
-     
-     
-     
      // buttons
      ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-      Debug.DrawLine (ray.origin, Camera.main.transform.forward * 50000000, Color.red);
+     //paint mouse ray
+      //Debug.DrawLine (ray.origin, Camera.main.transform.forward * 50000000, Color.red);
 
      if(Physics.Raycast(ray, hit, Mathf.Infinity) && Input.GetMouseButtonDown(0))
      {
@@ -91,7 +86,6 @@ function Update () {
          }
      }
      
-     
      // knob
      // knob rotation
       if (Input.GetMouseButton(0))
@@ -102,8 +96,6 @@ function Update () {
             menuKnob.transform.Rotate(Vector3.left * y * speed, Space.World);    
             menuKnob.transform.Rotate(Vector3.right * x * speed, Space.World);
       }
-     
-     
 }
 
  function Awake()

@@ -18,10 +18,12 @@ var lockMouse : boolean;
  
  function OnGUI()
  {
-		GUI.Label(new Rect(10, 10, 100, 20), "Mouse locked: " + lockMouse);
+
  }
  
 function Update () {
+	
+	// mouse camera controls, has problems when enabling/disabling mouse cursor
 	if(lockMouse) {
     lastMouse = Input.mousePosition - lastMouse ;
     lastMouse = Vector3(-lastMouse.y * camSens, lastMouse.x * camSens, 0 );
@@ -58,6 +60,7 @@ function Update () {
     if (Input.GetKeyUp (KeyCode.LeftAlt)){
     	if(lockMouse) {
     		Cursor.visible = true;
+    		Cursor.lockState = CursorLockMode.Locked;
     		Cursor.lockState = CursorLockMode.None;
     		lockMouse = false;
     	} else {

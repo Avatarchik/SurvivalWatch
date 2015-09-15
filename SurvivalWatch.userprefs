@@ -1,8 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\watch.js">
     <Files>
-      <File FileName="Assets\Scripts\watch.js" Line="26" Column="14" />
+      <File FileName="Assets\Scripts\watch.js" Line="44" Column="21" />
+      <File FileName="Assets\Scripts\cameraJscript.js" Line="33" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
