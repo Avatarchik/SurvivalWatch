@@ -1,0 +1,142 @@
+fileFormatVersion: 2
+guid: 5f59d6e12448d7849ac560b178589d80
+timeCreated: 1442279996
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: <STL_BINARY>_0
+    100002: <STL_BINARY>_1
+    100004: <STL_BINARY>_10
+    100006: <STL_BINARY>_11
+    100008: <STL_BINARY>_12
+    100010: <STL_BINARY>_13
+    100012: <STL_BINARY>_14
+    100014: <STL_BINARY>_2
+    100016: <STL_BINARY>_3
+    100018: <STL_BINARY>_4
+    100020: <STL_BINARY>_5
+    100022: <STL_BINARY>_6
+    100024: <STL_BINARY>_7
+    100026: <STL_BINARY>_8
+    100028: <STL_BINARY>_9
+    100030: //RootNode
+    400000: <STL_BINARY>_0
+    400002: <STL_BINARY>_1
+    400004: <STL_BINARY>_10
+    400006: <STL_BINARY>_11
+    400008: <STL_BINARY>_12
+    400010: <STL_BINARY>_13
+    400012: <STL_BINARY>_14
+    400014: <STL_BINARY>_2
+    400016: <STL_BINARY>_3
+    400018: <STL_BINARY>_4
+    400020: <STL_BINARY>_5
+    400022: <STL_BINARY>_6
+    400024: <STL_BINARY>_7
+    400026: <STL_BINARY>_8
+    400028: <STL_BINARY>_9
+    400030: //RootNode
+    2300000: <STL_BINARY>_0
+    2300002: <STL_BINARY>_1
+    2300004: <STL_BINARY>_10
+    2300006: <STL_BINARY>_11
+    2300008: <STL_BINARY>_12
+    2300010: <STL_BINARY>_13
+    2300012: <STL_BINARY>_14
+    2300014: <STL_BINARY>_2
+    2300016: <STL_BINARY>_3
+    2300018: <STL_BINARY>_4
+    2300020: <STL_BINARY>_5
+    2300022: <STL_BINARY>_6
+    2300024: <STL_BINARY>_7
+    2300026: <STL_BINARY>_8
+    2300028: <STL_BINARY>_9
+    3300000: <STL_BINARY>_0
+    3300002: <STL_BINARY>_1
+    3300004: <STL_BINARY>_10
+    3300006: <STL_BINARY>_11
+    3300008: <STL_BINARY>_12
+    3300010: <STL_BINARY>_13
+    3300012: <STL_BINARY>_14
+    3300014: <STL_BINARY>_2
+    3300016: <STL_BINARY>_3
+    3300018: <STL_BINARY>_4
+    3300020: <STL_BINARY>_5
+    3300022: <STL_BINARY>_6
+    3300024: <STL_BINARY>_7
+    3300026: <STL_BINARY>_8
+    3300028: <STL_BINARY>_9
+    4300000: <STL_BINARY>_0
+    4300002: <STL_BINARY>_1
+    4300004: <STL_BINARY>_2
+    4300006: <STL_BINARY>_3
+    4300008: <STL_BINARY>_4
+    4300010: <STL_BINARY>_5
+    4300012: <STL_BINARY>_6
+    4300014: <STL_BINARY>_7
+    4300016: <STL_BINARY>_8
+    4300018: <STL_BINARY>_9
+    4300020: <STL_BINARY>_10
+    4300022: <STL_BINARY>_11
+    4300024: <STL_BINARY>_12
+    4300026: <STL_BINARY>_13
+    4300028: <STL_BINARY>_14
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
