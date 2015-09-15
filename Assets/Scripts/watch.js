@@ -12,10 +12,10 @@ import System;
  private var counter:int = 0;
  
  //buttons
- var hit : RaycastHit;
- var ray : Ray;
- private var parent : GameObject;
- private var child : GameObject;
+ private var hit : RaycastHit;
+ private var ray : Ray;
+ private var powerBtn : GameObject;
+ private var menuKnob : GameObject;
  
  //screen
  private var watchScreen : GameObject;
@@ -27,7 +27,12 @@ import System;
 		timeTxt = GameObject.Find("Time").GetComponent(UnityEngine.UI.Text);
 		timeAMPM = GameObject.Find("AM/PM").GetComponent(UnityEngine.UI.Text);
 		
+		//watch screen
 		watchScreen = GameObject.Find("WatchScreen");
+		
+		//buttons
+		powerBtn = GameObject.Find("PowerButton");
+		menuKnob = GameObject.Find("MenuKnob");
  }
  
  function OnGUI()
@@ -54,12 +59,17 @@ function Update () {
      {
      	counter = (blinkSpeed/2);
          blink = true;
-         timeTxt.text = String.Format("{0:00}", h) + " " + String.Format("{0:00}", m);
+         //convert to 12-hour
+         if(h > 12)
+         	h = h-12;
+         timeTxt.text = String.Format("{0:00} {1:00}", h, m);
          timeAMPM.text = System.DateTime.Now.ToString("tt");
      } 
      else if(counter == 0){
          blink = false;
-         timeTxt.text = String.Format("{0:00}", h) + ":" + String.Format("{0:00}", m);
+         if(h > 12)
+         	h = h-12;
+         timeTxt.text = String.Format("{0:00}:{1:00}", h, m);
          timeAMPM.text = System.DateTime.Now.ToString("tt");
      }
      
@@ -72,9 +82,8 @@ function Update () {
 
      if(Physics.Raycast(ray, hit, Mathf.Infinity) && Input.GetMouseButtonDown(0))
      {
-         if(hit.collider == child.GetComponent(Collider))
+         if(hit.collider == powerBtn.GetComponent(Collider))
          {
-             print ("HIT!");
              if(watchScreen.active)
              	watchScreen.SetActive(false);
              else
@@ -83,11 +92,22 @@ function Update () {
      }
      
      
+     // knob
+     // knob rotation
+      if (Input.GetMouseButton(0))
+      {
+            x = -Input.GetAxis("Mouse X");
+            y = -Input.GetAxis("Mouse Y");
+            speed = 5;
+            menuKnob.transform.Rotate(Vector3.left * y * speed, Space.World);    
+            menuKnob.transform.Rotate(Vector3.right * x * speed, Space.World);
+      }
+     
+     
 }
 
  function Awake()
  {
-     //parent = new GameObject("StarParent");
-     child = GameObject.Find("Cube");
+
  }
  
