@@ -29,6 +29,11 @@ import System.Math;
  //camera
  private var cam : GameObject;
  
+ //watch
+ private var rotating : boolean;
+ private var watch : GameObject;
+ private var watchPivot : GameObject;
+ 
  
  function Start()
  {
@@ -50,6 +55,11 @@ import System.Math;
 		
 		//camera
 		cam = GameObject.Find("Main Camera");
+		
+		//watch
+		watch = GameObject.Find("Watch");
+		watchPivot = GameObject.Find("WatchPivot");
+		rotating = true;
  }
  
  function OnGUI()
@@ -119,7 +129,17 @@ function Update () {
            menuKnob.transform.Rotate(Vector3.left * y * speed, Space.World);    
            menuKnob.transform.Rotate(Vector3.right * x * speed, Space.World);
      }
-}
+     
+     //watch
+     //rotate around a sphere called the WatchPivot
+     if(Input.GetKeyUp(KeyCode.R))
+		if(rotating)
+			rotating = false;
+		else
+			rotating = true;
+     if(rotating)
+     	watch.transform.RotateAround(watchPivot.transform.position, Vector3.up,0.2);
+}		
 
  function Awake()
  {

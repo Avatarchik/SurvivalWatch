@@ -18,7 +18,8 @@ var lockMouse : boolean;
  
  function OnGUI()
  {
-
+		//draw instructions
+		GUI.Label(new Rect(10, 10, 200, 200), "W A S D - Movement\nLeft Shift - Hold for speed\nMouse - Look\nQ - Go up\nZ / Left CTRL - Go down\nLeft Alt - Click mode\nR - Start/Stop display mode");
  }
  
 function Update () {
