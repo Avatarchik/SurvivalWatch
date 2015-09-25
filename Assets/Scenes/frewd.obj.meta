@@ -1,0 +1,152 @@
+fileFormatVersion: 2
+guid: 31a143517d83def41b21fc731ff7ced0
+timeCreated: 1443041046
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Null_Polygon
+    100004: Null_Polygon1
+    100006: Null_Polygon10
+    100008: Null_Polygon11
+    100010: Null_Polygon12
+    100012: Null_Polygon13
+    100014: Null_Polygon14
+    100016: Null_Polygon15
+    100018: Null_Polygon16
+    100020: Null_Polygon2
+    100022: Null_Polygon3
+    100024: Null_Polygon4
+    100026: Null_Polygon5
+    100028: Null_Polygon6
+    100030: Null_Polygon7
+    100032: Null_Polygon8
+    100034: Null_Polygon9
+    400000: //RootNode
+    400002: Null_Polygon
+    400004: Null_Polygon1
+    400006: Null_Polygon10
+    400008: Null_Polygon11
+    400010: Null_Polygon12
+    400012: Null_Polygon13
+    400014: Null_Polygon14
+    400016: Null_Polygon15
+    400018: Null_Polygon16
+    400020: Null_Polygon2
+    400022: Null_Polygon3
+    400024: Null_Polygon4
+    400026: Null_Polygon5
+    400028: Null_Polygon6
+    400030: Null_Polygon7
+    400032: Null_Polygon8
+    400034: Null_Polygon9
+    2300000: Null_Polygon
+    2300002: Null_Polygon1
+    2300004: Null_Polygon10
+    2300006: Null_Polygon11
+    2300008: Null_Polygon12
+    2300010: Null_Polygon13
+    2300012: Null_Polygon14
+    2300014: Null_Polygon15
+    2300016: Null_Polygon16
+    2300018: Null_Polygon2
+    2300020: Null_Polygon3
+    2300022: Null_Polygon4
+    2300024: Null_Polygon5
+    2300026: Null_Polygon6
+    2300028: Null_Polygon7
+    2300030: Null_Polygon8
+    2300032: Null_Polygon9
+    3300000: Null_Polygon
+    3300002: Null_Polygon1
+    3300004: Null_Polygon10
+    3300006: Null_Polygon11
+    3300008: Null_Polygon12
+    3300010: Null_Polygon13
+    3300012: Null_Polygon14
+    3300014: Null_Polygon15
+    3300016: Null_Polygon16
+    3300018: Null_Polygon2
+    3300020: Null_Polygon3
+    3300022: Null_Polygon4
+    3300024: Null_Polygon5
+    3300026: Null_Polygon6
+    3300028: Null_Polygon7
+    3300030: Null_Polygon8
+    3300032: Null_Polygon9
+    4300000: Null_Polygon
+    4300002: Null_Polygon1
+    4300004: Null_Polygon10
+    4300006: Null_Polygon11
+    4300008: Null_Polygon12
+    4300010: Null_Polygon13
+    4300012: Null_Polygon14
+    4300014: Null_Polygon15
+    4300016: Null_Polygon16
+    4300018: Null_Polygon2
+    4300020: Null_Polygon3
+    4300022: Null_Polygon4
+    4300024: Null_Polygon5
+    4300026: Null_Polygon6
+    4300028: Null_Polygon7
+    4300030: Null_Polygon8
+    4300032: Null_Polygon9
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
