@@ -2,6 +2,7 @@
 //Watch logic (panels, apps, buttons)
 
 import UnityEngine.UI;
+import UnityEngine.Compass;
 import System;
 import System.Math;
 
@@ -16,6 +17,15 @@ import System.Math;
  private var latTxt : UnityEngine.UI.Text;
  private var longTxt : UnityEngine.UI.Text;
  private var altTxt : UnityEngine.UI.Text;
+ 
+ //calander app
+ private var dayOfWeekTxt : UnityEngine.UI.Text;
+ private var dayOfMonthTxt : UnityEngine.UI.Text;
+ private var monthTxt : UnityEngine.UI.Text;
+ 
+ //compass app
+ private var DirectionTxt : UnityEngine.UI.Text;
+ private var displayRect : Rect;
  
  //buttons
  private var hit : RaycastHit;
@@ -46,6 +56,15 @@ import System.Math;
 		timeTxt = GameObject.Find("Time").GetComponent(UnityEngine.UI.Text);
 		timeAMPM = GameObject.Find("AM/PM").GetComponent(UnityEngine.UI.Text);
 		
+		//calander app
+		dayOfWeekTxt = GameObject.Find("DayOfWeek").GetComponent(UnityEngine.UI.Text);
+		dayOfMonthTxt = GameObject.Find("DayOfMonth").GetComponent(UnityEngine.UI.Text);
+		monthTxt = GameObject.Find("Month").GetComponent(UnityEngine.UI.Text);
+		
+		//compass app
+		DirectionTxt = GameObject.Find("Direction").GetComponent(UnityEngine.UI.Text);
+
+		
 		//watch screen
 		watchScreen = GameObject.Find("WatchScreen");
 		
@@ -59,13 +78,12 @@ import System.Math;
 		//watch
 		watch = GameObject.Find("Watch");
 		watchPivot = GameObject.Find("WatchPivot");
-		rotating = true;
+		rotating = false;
  }
  
  function OnGUI()
  {
-		
-		
+
  }
  
 function Update () {
@@ -80,6 +98,15 @@ function Update () {
  	var h : int = dt.Hour;
  	var m : int = dt.Minute;
  	var s : int = dt.Second;
+ 	
+ 	//calander app
+ 	dt = System.DateTime.Now;
+ 	dayOfWeekTxt.text = dt.DayOfWeek.ToString().Substring(0,3) + "";
+	dayOfMonthTxt.text = String.Format("{0:00}", dt.Day);
+	monthTxt.text = String.Format("{0:00}", dt.Month);
+	
+	//compass app
+	DirectionTxt.text = getCompassStr();
  	
  	//convert to 12-hour
     if (h > 12)
@@ -118,17 +145,19 @@ function Update () {
                 watchScreen.SetActive(true);
         }
 	}
-     
+    
      // knob
      // knob rotation
 	if (Input.GetMouseButton(0))
      {
-           x = -Input.GetAxis("Mouse X");
-           y = -Input.GetAxis("Mouse Y");
-           speed = 5;
+           var x = -Input.GetAxis("Mouse X");
+           var y = -Input.GetAxis("Mouse Y");
+           var speed = 5;
            menuKnob.transform.Rotate(Vector3.left * y * speed, Space.World);    
            menuKnob.transform.Rotate(Vector3.right * x * speed, Space.World);
      }
+     
+     
      
      //watch
      //rotate around a sphere called the WatchPivot
@@ -144,5 +173,42 @@ function Update () {
  function Awake()
  {
 
+ }
+ 
+ function getCompassStr() {
+ 	var dir = watch.transform.rotation.eulerAngles.y;
+	var dirTxt = "";
+	if(dir >= 348.75 || dir < 11.25)
+		dirTxt = "N";
+	else if(dir >= 11.25 && dir < 33.75)
+		dirTxt = "N N E";
+	else if(dir >= 33.75 && dir < 56.25)
+		dirTxt = "N E";
+	else if(dir >= 56.25 && dir < 78.75)
+		dirTxt = "E N E";
+	else if(dir >= 78.75 && dir < 101.25)
+		dirTxt = "E";
+	else if(dir >= 101.25 && dir < 123.75)
+		dirTxt = "E S E";
+	else if(dir >= 123.75 && dir < 146.25)
+		dirTxt = "S E";
+	else if(dir >= 146.25 && dir < 168.75)
+		dirTxt = "S S E";
+	else if(dir >= 168.75 && dir < 191.25)
+		dirTxt = "S";
+	else if(dir >= 191.25 && dir < 213.75)
+		dirTxt = "S S W";
+	else if(dir >= 213.75 && dir < 236.25)
+		dirTxt = "S W";
+	else if(dir >= 236.25 && dir < 258.75)
+		dirTxt = "W S W";
+	else if(dir >= 281.25 && dir < 303.75)
+		dirTxt = "W";
+	else if(dir >= 303.75 && dir < 326.25)
+		dirTxt = "N W";
+	else if(dir >= 326.25 && dir < 348.75)
+		dirTxt = "N N W";
+		
+	return dirTxt;
  }
  

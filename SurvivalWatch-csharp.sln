@@ -1,19 +1,23 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-
+Project("{A85406D8-5ECA-B637-63AD-CD3B5835ACBE}") = "SurvivalWatch", "Assembly-CSharp-vs.csproj", "{663BFF9C-1EB4-9E2C-F30C-8761951DF9D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-
+		{663BFF9C-1EB4-9E2C-F30C-8761951DF9D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{663BFF9C-1EB4-9E2C-F30C-8761951DF9D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{663BFF9C-1EB4-9E2C-F30C-8761951DF9D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{663BFF9C-1EB4-9E2C-F30C-8761951DF9D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-												GlobalSection(MonoDevelopProperties) = preSolution
+																										GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

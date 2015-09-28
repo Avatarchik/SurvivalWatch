@@ -1,9 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\watch.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\cameraJscript.js">
     <Files>
-      <File FileName="Assets\Scripts\watch.js" Line="125" Column="7" />
-      <File FileName="Assets\Scripts\cameraJscript.js" Line="13" Column="3" />
+      <File FileName="Assets\Scripts\AdvancedCamera.cs" Line="36" Column="5" />
+      <File FileName="Assets\Scripts\cameraJscript.js" Line="76" Column="21" />
+      <File FileName="Assets\Scripts\spinObject.js" Line="16" Column="25" />
+      <File FileName="Assets\Scripts\watch.js" Line="178" Column="28" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
