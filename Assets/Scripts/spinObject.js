@@ -13,7 +13,7 @@
      {
            var x = -Input.GetAxis("Mouse X");
            var y = -Input.GetAxis("Mouse Y");
-           var speed = 2;
+           var speed = 1;
            this.transform.RotateAround(watchPivot.transform.position, Vector3.down * y, speed);    
            this.transform.RotateAround(watchPivot.transform.position, Vector3.up * x, speed);
      }

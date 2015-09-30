@@ -22,18 +22,8 @@ var lockMouse : boolean;
 		GUI.Label(new Rect(10, 10, 200, 200), "W A S D - Movement\nLeft Shift - Hold for speed\nMouse - Look\nQ - Go up\nZ / Left CTRL - Go down\nLeft Alt - Click mode\nR - Start/Stop display mode");
  }
  
-private var firstpoint:Vector3; //change type on Vector3
-  private var secondpoint:Vector3;
-  private var xAngle: float = 0.0; //angle for axes x for rotation
-  private var yAngle: float = 0.0;
-  private var xAngTemp: float = 0.0; //temp variable for angle
-  private var yAngTemp: float = 0.0;
-  
-  public var perspectiveZoomSpeed : float = 0.5f;  // The rate of change of the field of view in perspective mode. E' la velocità con la quale si avrà lo zoom
-public var orthoZoomSpeed : float = 0.5f;
- 
-function Update () {
-	if (Application.platform == RuntimePlatform.Android) {
+ function Update () {
+	 if (Application.platform == RuntimePlatform.Android) {
 
    
      } else {
