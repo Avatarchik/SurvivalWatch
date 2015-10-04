@@ -32,6 +32,8 @@ import System.Math;
  private var ray : Ray;
  private var powerBtn : GameObject;
  private var menuKnob : GameObject;
+ private var topSideButton : GameObject;
+ private var bottomSideButton : GameObject;
  
  //screen
  private var watchScreen : GameObject;
@@ -44,6 +46,13 @@ import System.Math;
  private var watch : GameObject;
  private var watchPivot : GameObject;
  
+ //LEDs
+ private var rtLED : UnityEngine.Light;
+ private var rbLED : UnityEngine.Light;
+ private var ltLED : UnityEngine.Light;
+ private var lbLED : UnityEngine.Light;
+ private var ledOn : boolean;
+ private var ledBlinking : boolean;
  
  function Start()
  {
@@ -71,6 +80,8 @@ import System.Math;
 		//buttons
 		powerBtn = GameObject.Find("PowerButton");
 		menuKnob = GameObject.Find("MenuKnob");
+		topSideButton = GameObject.Find("TopSideButton");
+		bottomSideButton = GameObject.Find("BottomSideButton");
 		
 		//camera
 		cam = GameObject.Find("Main Camera");
@@ -79,6 +90,13 @@ import System.Math;
 		watch = GameObject.Find("Watch");
 		watchPivot = GameObject.Find("WatchPivot");
 		rotating = false;
+		
+		//LEDs
+		rtLED = GameObject.Find("RightTopLEDLight").GetComponent(UnityEngine.Light);
+ 		rbLED = GameObject.Find("RightBottomLEDLight").GetComponent(UnityEngine.Light);
+ 		ltLED = GameObject.Find("LeftTopLEDLight").GetComponent(UnityEngine.Light);
+ 		lbLED = GameObject.Find("LeftBottomLEDLight").GetComponent(UnityEngine.Light);
+ 		LEDStatus = "off";
  }
  
  function OnGUI()
@@ -124,10 +142,24 @@ function Update () {
         counter = (blinkSpeed/2);
         blink = true;
         timeTxt.text = String.Format("{0:00} {1:00}", h, m);
+        
+        //LED blinking
+        if(ledBlinking) {
+        	rtLED.color = Color.white;
+        	rbLED.color = Color.red;
+        	ltLED.color = Color.white;
+        	lbLED.color = Color.red;
+        }
     } 
 	else if(counter == 0){
         blink = false;
         timeTxt.text = String.Format("{0:00}:{1:00}", h, m);
+        if(ledBlinking) {
+        	rtLED.color = Color.red;
+        	rbLED.color = Color.white;
+        	ltLED.color = Color.red;
+        	lbLED.color = Color.white;
+        }
 	}
     timeAMPM.text = System.DateTime.Now.ToString("tt");
     // buttons
@@ -143,6 +175,18 @@ function Update () {
             	watchScreen.SetActive(false);
             else
                 watchScreen.SetActive(true);
+        }
+        if(hit.collider == topSideButton.GetComponent(Collider))
+        {
+        		ledOn = !ledOn;
+        		rtLED.enabled = ledOn;
+        		rbLED.enabled = ledOn;
+        		ltLED.enabled = ledOn;
+        		lbLED.enabled = ledOn;
+        }
+        if(hit.collider == bottomSideButton.GetComponent(Collider))
+        {
+        		ledBlinking = !ledBlinking;
         }
 	}
     
