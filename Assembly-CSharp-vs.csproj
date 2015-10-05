@@ -47,6 +47,33 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\AdvancedCamera.cs" />
+     <None Include="Assets\StreetViewPack\mosqueYard\url.txt" />
+     <None Include="Assets\StreetViewPack\coloredNight\url.txt" />
+     <None Include="Assets\StreetViewPack\dairyShop\url.txt" />
+     <None Include="Assets\StreetViewPack\cloudyPeak\url.txt" />
+     <None Include="Assets\StreetViewPack\stonyField\url.txt" />
+     <None Include="Assets\StreetViewPack\StreetPreView.shader" />
+     <None Include="Assets\StreetViewPack\mountainValley\url.txt" />
+     <None Include="Assets\StreetViewPack\jungleRuins\url.txt" />
+     <None Include="Assets\StreetViewPack\floralPatio\url.txt" />
+     <None Include="Assets\StreetViewPack\egyptPyramid\url.txt" />
+     <None Include="Assets\StreetViewPack\catHouse\url.txt" />
+     <None Include="Assets\StreetViewPack\nightCity\url.txt" />
+     <None Include="Assets\StreetViewPack\smallCafe\url.txt" />
+     <None Include="Assets\StreetViewPack\aircraftCockpit\url.txt" />
+     <None Include="Assets\StreetViewPack\sportStadium\url.txt" />
+     <None Include="Assets\StreetViewPack\StreetView.shader" />
+     <None Include="Assets\StreetViewPack\readme.txt" />
+     <None Include="Assets\StreetViewPack\concreteStairs\url.txt" />
+     <None Include="Assets\StreetViewPack\southPole\url.txt" />
+     <None Include="Assets\StreetViewPack\autumnWood\url.txt" />
+     <None Include="Assets\StreetViewPack\rusticMill\url.txt" />
+     <None Include="Assets\StreetViewPack\mysticCavern\url.txt" />
+     <None Include="Assets\StreetViewPack\woodSpring\url.txt" />
+     <None Include="Assets\StreetViewPack\underwaterCoral\url.txt" />
+     <None Include="Assets\StreetViewPack\tvStudio\url.txt" />
+     <None Include="Assets\StreetViewPack\insideMachinery\url.txt" />
+     <None Include="Assets\StreetViewPack\eiffelTower\url.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

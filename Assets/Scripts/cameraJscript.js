@@ -28,7 +28,7 @@ var lockMouse : boolean;
    
      } else {
      
-	// mouse camera controls, has problems when enabling/disabling mouse cursor
+	// mouse camera controls
 	if(lockMouse) {
     lastMouse = Input.mousePosition - lastMouse ;
     lastMouse = Vector3(-lastMouse.y * camSens, lastMouse.x * camSens, 0 );
@@ -65,13 +65,14 @@ var lockMouse : boolean;
     if (Input.GetKeyUp (KeyCode.LeftAlt)){
     	if(lockMouse) {
     		Cursor.visible = true;
-    		Cursor.lockState = CursorLockMode.Locked;
+    		//Cursor.lockState = CursorLockMode.Locked;
     		Cursor.lockState = CursorLockMode.None;
     		lockMouse = false;
     	} else {
     		Cursor.visible = false;
     		Cursor.lockState = CursorLockMode.Confined;
     		lockMouse = true;
+    		lastMouse =  Input.mousePosition;
     	}
 	
     }
@@ -100,6 +101,9 @@ private function GetBaseInput() : Vector3 { //returns the basic values, if it's 
     }
     if (Input.GetKey (KeyCode.LeftControl)){
         p_Velocity += Vector3(0, -1 , 0);
+    }
+    if (Input.GetKey (KeyCode.Escape)){
+        Application.Quit();
     }
     return p_Velocity;
 }
