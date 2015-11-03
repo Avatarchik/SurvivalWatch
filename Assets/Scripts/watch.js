@@ -2,30 +2,14 @@
 //Watch logic (panels, apps, buttons)
 
 import UnityEngine.UI;
-import UnityEngine.Compass;
 import System;
 import System.Math;
 
-//time app
- var timeTxt : UnityEngine.UI.Text;
- var timeAMPM : UnityEngine.UI.Text;
- private var blinkSpeed:int = 60;
+ //LEDs
+ private var blinkDelay:int = 2;
  private var blink = false;
  private var counter:int = 0;
- 
- //gps app
- private var latTxt : UnityEngine.UI.Text;
- private var longTxt : UnityEngine.UI.Text;
- private var altTxt : UnityEngine.UI.Text;
- 
- //calander app
- private var dayOfWeekTxt : UnityEngine.UI.Text;
- private var dayOfMonthTxt : UnityEngine.UI.Text;
- private var monthTxt : UnityEngine.UI.Text;
- 
- //compass app
- private var DirectionTxt : UnityEngine.UI.Text;
- private var displayRect : Rect;
+
  
  //buttons
  private var hit : RaycastHit;
@@ -54,26 +38,13 @@ import System.Math;
  private var ledOn : boolean;
  private var ledBlinking : boolean;
  
+ //Template reader
+ private var appdata : String;
+ private var templatePath : String;
+ 
+ var newObj;
  function Start()
  {
- 		//gps app
- 		latTxt = GameObject.Find("Latitude").GetComponent(UnityEngine.UI.Text);
- 		longTxt = GameObject.Find("Longitude").GetComponent(UnityEngine.UI.Text);
- 		altTxt = GameObject.Find("Altitude").GetComponent(UnityEngine.UI.Text);
- 		
- 		//time app
-		timeTxt = GameObject.Find("Time").GetComponent(UnityEngine.UI.Text);
-		timeAMPM = GameObject.Find("AM/PM").GetComponent(UnityEngine.UI.Text);
-		
-		//calander app
-		dayOfWeekTxt = GameObject.Find("DayOfWeek").GetComponent(UnityEngine.UI.Text);
-		dayOfMonthTxt = GameObject.Find("DayOfMonth").GetComponent(UnityEngine.UI.Text);
-		monthTxt = GameObject.Find("Month").GetComponent(UnityEngine.UI.Text);
-		
-		//compass app
-		DirectionTxt = GameObject.Find("Direction").GetComponent(UnityEngine.UI.Text);
-
-		
 		//watch screen
 		watchScreen = GameObject.Find("WatchScreen");
 		
@@ -96,7 +67,23 @@ import System.Math;
  		rbLED = GameObject.Find("RightBottomLEDLight").GetComponent(UnityEngine.Light);
  		ltLED = GameObject.Find("LeftTopLEDLight").GetComponent(UnityEngine.Light);
  		lbLED = GameObject.Find("LeftBottomLEDLight").GetComponent(UnityEngine.Light);
- 		LEDStatus = "off";
+ 		
+ 		//READ LAYOUT FILES
+ 		// Sets to this: C:\Documents and Settings\Administrator\Application Data
+ 		appdata = System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData);  
+ 		templatePath = appdata + "\\.SWatch\\Templates\\";
+ 		if(System.IO.Directory.Exists(templatePath)) {
+ 			
+ 		}
+ 		else {
+ 			System.IO.Directory.CreateDirectory(templatePath);
+ 		}
+ 		newObj = GameObject.Instantiate(UnityEngine.Resources.Load("DigitalTimeApp"));
+		newObj.transform.SetParent(GameObject.Find("CenterMiddleApp").transform, false);
+	
+		//newObj.SetParent(GameObject.Find("CenterMiddleApp"));
+		
+ 
  }
  
  function OnGUI()
@@ -105,44 +92,15 @@ import System.Math;
  }
  
 function Update () {
-
-	//gps app
-	latTxt.text = "Latitude:\n" + "N" + Math.Abs(Math.Round(cam.transform.position.x)) + "°26'44.82\"";
-	longTxt.text = "Longitude:\n" + "W" + Math.Abs(Math.Round(cam.transform.position.z)) + "°41'27.48\"";
-	altTxt.text = "Alt: " + Math.Abs(Math.Round(cam.transform.position.y)) + " ft";
-
-	// Time app
- 	var dt : System.DateTime = System.DateTime.Now;
- 	var h : int = dt.Hour;
- 	var m : int = dt.Minute;
- 	var s : int = dt.Second;
- 	
- 	//calander app
- 	dt = System.DateTime.Now;
- 	dayOfWeekTxt.text = dt.DayOfWeek.ToString().Substring(0,3) + "";
-	dayOfMonthTxt.text = String.Format("{0:00}", dt.Day);
-	monthTxt.text = String.Format("{0:00}", dt.Month);
-	
-	//compass app
-	DirectionTxt.text = getCompassStr();
- 	
- 	//convert to 12-hour
-    if (h > 12)
-    	h = h-12;
-    else if (h == 0)
-        h = 12;
- 	
-
+	newObj.transform.localScale = GameObject.Find("CenterMiddleApp").transform.localScale;
 	if(blink)
 		counter--;
 	else
 		counter++;
-    if(counter == blinkSpeed)
+    if(counter == blinkDelay)
 	{
-        counter = (blinkSpeed/2);
+        counter = (blinkDelay/2);
         blink = true;
-        timeTxt.text = String.Format("{0:00} {1:00}", h, m);
-        
         //LED blinking
         if(ledBlinking) {
         	rtLED.color = Color.white;
@@ -153,7 +111,6 @@ function Update () {
     } 
 	else if(counter == 0){
         blink = false;
-        timeTxt.text = String.Format("{0:00}:{1:00}", h, m);
         if(ledBlinking) {
         	rtLED.color = Color.red;
         	rbLED.color = Color.white;
@@ -161,7 +118,7 @@ function Update () {
         	lbLED.color = Color.white;
         }
 	}
-    timeAMPM.text = System.DateTime.Now.ToString("tt");
+    //timeAMPM.text = System.DateTime.Now.ToString("tt");
     // buttons
     ray = Camera.main.ScreenPointToRay(Input.mousePosition);
     //paint mouse ray
@@ -219,40 +176,14 @@ function Update () {
 
  }
  
- function getCompassStr() {
- 	var dir = watch.transform.rotation.eulerAngles.y;
-	var dirTxt = "";
-	if(dir >= 348.75 || dir < 11.25)
-		dirTxt = "N";
-	else if(dir >= 11.25 && dir < 33.75)
-		dirTxt = "N N E";
-	else if(dir >= 33.75 && dir < 56.25)
-		dirTxt = "N E";
-	else if(dir >= 56.25 && dir < 78.75)
-		dirTxt = "E N E";
-	else if(dir >= 78.75 && dir < 101.25)
-		dirTxt = "E";
-	else if(dir >= 101.25 && dir < 123.75)
-		dirTxt = "E S E";
-	else if(dir >= 123.75 && dir < 146.25)
-		dirTxt = "S E";
-	else if(dir >= 146.25 && dir < 168.75)
-		dirTxt = "S S E";
-	else if(dir >= 168.75 && dir < 191.25)
-		dirTxt = "S";
-	else if(dir >= 191.25 && dir < 213.75)
-		dirTxt = "S S W";
-	else if(dir >= 213.75 && dir < 236.25)
-		dirTxt = "S W";
-	else if(dir >= 236.25 && dir < 258.75)
-		dirTxt = "W S W";
-	else if(dir >= 281.25 && dir < 303.75)
-		dirTxt = "W";
-	else if(dir >= 303.75 && dir < 326.25)
-		dirTxt = "N W";
-	else if(dir >= 326.25 && dir < 348.75)
-		dirTxt = "N N W";
-		
-	return dirTxt;
+ function OnApplicationQuit() {
+ 	 	if(System.IO.Directory.Exists(templatePath)) {
+ 			
+ 		}
+ 		else {
+ 			System.IO.Directory.DeleteDirectory(templatePath);
+ 		}
  }
+ 
+
  
