@@ -123,7 +123,8 @@ import System.Math;
  
  function connectUSB() {
  	USBConnected = !USBConnected;
- 	System.IO.File.Create(appdata + "\\.SWatch\\connected");
+ 	var fw = System.IO.File.Create(appdata + "\\.SWatch\\connected");
+ 	fw.Close();
  	for (var child : Transform in appZone.transform) {
     	child.gameObject.SetActive(false);
 	}	
