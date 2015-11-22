@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\AppCode\DigitalTimeApp.js" />
      <Compile Include="Assets\Scripts\AppCode\GPSApp.js" />
      <Compile Include="Assets\Scripts\AppCode\TrackRApp.js" />
+     <Compile Include="Assets\Scripts\button_press.js" />
      <Compile Include="Assets\Scripts\cameraJscript.js" />
      <Compile Include="Assets\Scripts\spinObject.js" />
      <Compile Include="Assets\Scripts\watch.js" />

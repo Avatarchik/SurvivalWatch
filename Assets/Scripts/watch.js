@@ -18,9 +18,17 @@ import System.Math;
  private var menuKnob : GameObject;
  private var topSideButton : GameObject;
  private var bottomSideButton : GameObject;
+ private var TopPartButton : GameObject;
+ private var BottomPartButton : GameObject;
+ private var AppSwitchButton : GameObject;
+ private var LockButton : GameObject;
+ var anim: Animator;
+ 
+ 
  
  //screen
  private var watchScreen : GameObject;
+ private var appZone : GameObject;
  
  //camera
  private var cam : GameObject;
@@ -38,21 +46,37 @@ import System.Math;
  private var ledOn : boolean;
  private var ledBlinking : boolean;
  
- //Template reader
+ //Template reader/switch
  private var appdata : String;
  private var templatePath : String;
+ private var lockIndicator : GameObject;
+ private var locked : boolean = true;
  
- var newObj;
+ // USB
+ private var USBConnected = false;
+ private var USBConnectionStatus : UnityEngine.UI.Text;
+ private var USBScreen : GameObject;
+ 
  function Start()
  {
 		//watch screen
 		watchScreen = GameObject.Find("WatchScreen");
+		appZone = GameObject.Find("AppZone");
 		
 		//buttons
 		powerBtn = GameObject.Find("PowerButton");
 		menuKnob = GameObject.Find("MenuKnob");
 		topSideButton = GameObject.Find("TopSideButton");
 		bottomSideButton = GameObject.Find("BottomSideButton");
+		TopPartButton = GameObject.Find("TopPartButton");
+		BottomPartButton = GameObject.Find("BottomPartButton");
+		AppSwitchButton = GameObject.Find("AppSwitchButton");
+		LockButton = GameObject.Find("LockButton");
+		lockIndicator = GameObject.Find("LockIndicator");
+		anim = AppSwitchButton.GetComponent(UnityEngine.Animator);
+		
+		USBConnectionStatus = GameObject.Find("USBConnectionStatus").GetComponent(UnityEngine.UI.Text);
+		USBScreen = GameObject.Find("USBScreen");
 		
 		//camera
 		cam = GameObject.Find("Main Camera");
@@ -78,21 +102,44 @@ import System.Math;
  		else {
  			System.IO.Directory.CreateDirectory(templatePath);
  		}
- 		newObj = GameObject.Instantiate(UnityEngine.Resources.Load("DigitalTimeApp"));
-		newObj.transform.SetParent(GameObject.Find("CenterMiddleApp").transform, false);
-	
-		//newObj.SetParent(GameObject.Find("CenterMiddleApp"));
-		
- 
+ 		if(System.IO.File.Exists(appdata + "\\.SWatch\\connected")) {
+ 			System.IO.File.Delete(appdata + "\\.SWatch\\connected");
+ 		}
  }
+ 
+ 
  
  function OnGUI()
  {
-
+ 	if(USBConnected) {
+ 		if (GUI.Button(Rect(10,130,130,50),"Disconnect USB")) 
+			disconnectUSB();
+	}
+ 	else {
+ 		if (GUI.Button(Rect(10,130,130,50),"Connect USB"))
+			connectUSB();
+	}
+ }
+ 
+ function connectUSB() {
+ 	USBConnected = !USBConnected;
+ 	System.IO.File.Create(appdata + "\\.SWatch\\connected");
+ 	for (var child : Transform in appZone.transform) {
+    	child.gameObject.SetActive(false);
+	}	
+	USBConnectionStatus.text = "Connected to:\n " + System.Environment.MachineName;
+	USBScreen.SetActive(true);
+ }
+ 
+ function disconnectUSB() {
+ 	USBConnected = !USBConnected;
+ 	if(System.IO.File.Exists(appdata + "\\.SWatch\\connected")) {
+ 		System.IO.File.Delete(appdata + "\\.SWatch\\connected");
+ 	}
+ 	USBScreen.SetActive(false);
  }
  
 function Update () {
-	newObj.transform.localScale = GameObject.Find("CenterMiddleApp").transform.localScale;
 	if(blink)
 		counter--;
 	else
@@ -145,6 +192,23 @@ function Update () {
         {
         		ledBlinking = !ledBlinking;
         }
+        if(hit.collider == BottomPartButton.GetComponent(Collider))
+        {
+        	if(!locked) {
+				anim.Play("BOTTOM", -1, 1);
+			}
+        }
+        if(hit.collider == TopPartButton.GetComponent(Collider))
+        {
+        	if(!locked) {
+				anim.Play("TOP", -1, 1);
+			}
+        }
+        if(hit.collider == LockButton.GetComponent(Collider))
+        {
+				locked = !locked;
+				lockIndicator.SetActive(locked);
+        }
 	}
     
      // knob
@@ -177,12 +241,9 @@ function Update () {
  }
  
  function OnApplicationQuit() {
- 	 	if(System.IO.Directory.Exists(templatePath)) {
- 			
- 		}
- 		else {
- 			System.IO.Directory.DeleteDirectory(templatePath);
- 		}
+ 	if(System.IO.File.Exists(appdata + "\\.SWatch\\connected")) {
+ 		System.IO.File.Delete(appdata + "\\.SWatch\\connected");
+ 	}
  }
  
 
