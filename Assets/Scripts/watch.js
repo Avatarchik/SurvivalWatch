@@ -6,7 +6,7 @@ import System;
 import System.Math;
 
  //LEDs
- private var blinkDelay:int = 2;
+ private var blinkDelay:int = 50;
  private var blink = false;
  private var counter:int = 0;
 
@@ -51,6 +51,13 @@ import System.Math;
  private var templatePath : String;
  private var lockIndicator : GameObject;
  private var locked : boolean = true;
+ private var layoutIndex : int = 0;
+ 
+ private var casualWindow : GameObject;
+ private var survivalWindow : GameObject;
+ private var timeWindow : GameObject;
+ 
+ private var waitTime : float = 0f;
  
  // USB
  private var USBConnected = false;
@@ -93,6 +100,12 @@ import System.Math;
  		lbLED = GameObject.Find("LeftBottomLEDLight").GetComponent(UnityEngine.Light);
  		
  		//READ LAYOUT FILES
+ 		casualWindow = GameObject.Find("CasualLayout");
+		survivalWindow = GameObject.Find("SurvivalLayout");
+		timeWindow = GameObject.Find("TimeLayout");
+		survivalWindow.SetActive(false);
+		timeWindow.SetActive(false);
+ 		
  		// Sets to this: C:\Documents and Settings\Administrator\Application Data
  		appdata = System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData);  
  		templatePath = appdata + "\\.SWatch\\Templates\\";
@@ -138,6 +151,7 @@ import System.Math;
  		System.IO.File.Delete(appdata + "\\.SWatch\\connected");
  	}
  	USBScreen.SetActive(false);
+ 	restoreLayout();
  }
  
 function Update () {
@@ -193,17 +207,13 @@ function Update () {
         {
         		ledBlinking = !ledBlinking;
         }
-        if(hit.collider == BottomPartButton.GetComponent(Collider))
-        {
-        	if(!locked) {
-				anim.Play("BOTTOM", -1, 1);
-			}
-        }
         if(hit.collider == TopPartButton.GetComponent(Collider))
         {
-        	if(!locked) {
-				anim.Play("TOP", -1, 1);
-			}
+			decrementLayout();
+        }
+        if(hit.collider == BottomPartButton.GetComponent(Collider))
+        {
+        	incrementLayout();
         }
         if(hit.collider == LockButton.GetComponent(Collider))
         {
@@ -236,6 +246,65 @@ function Update () {
      	watch.transform.RotateAround(watchPivot.transform.position, Vector3.up,0.2);
 }		
 
+ function decrementLayout()
+ {
+         	if(!locked) {
+				anim.Play("TOP", -1, 1);
+				if(layoutIndex > 0)
+        			layoutIndex--;
+				yield WaitForSeconds(2);
+        		switch(layoutIndex) {
+    				case 0:
+        				casualWindow.SetActive(true);
+						survivalWindow.SetActive(false);
+						timeWindow.SetActive(false);
+        				break;
+    				case 1:
+        				casualWindow.SetActive(false);
+						survivalWindow.SetActive(true);
+						timeWindow.SetActive(false);
+        				break;
+        			case 2:
+        				casualWindow.SetActive(false);
+						survivalWindow.SetActive(false);
+						timeWindow.SetActive(true);
+        				break;
+				}
+			}
+ }
+ function restoreLayout() 
+ {
+ 	yield WaitForSeconds(1);
+	casualWindow.SetActive(true);
+	survivalWindow.SetActive(false);
+	timeWindow.SetActive(false);
+ }
+ function incrementLayout() 
+ {
+ 	if(!locked) {
+				anim.Play("BOTTOM", -1, 1);
+				if(layoutIndex < 2)
+        			layoutIndex++;
+				yield WaitForSeconds(2);
+        		switch(layoutIndex) {
+    				case 0:
+        				casualWindow.SetActive(true);
+						survivalWindow.SetActive(false);
+						timeWindow.SetActive(false);
+        				break;
+    				case 1:
+        				casualWindow.SetActive(false);
+						survivalWindow.SetActive(true);
+						timeWindow.SetActive(false);
+        				break;
+        			case 2:
+        				casualWindow.SetActive(false);
+						survivalWindow.SetActive(false);
+						timeWindow.SetActive(true);
+        				break;
+				}
+			}
+ }
  function Awake()
  {
 

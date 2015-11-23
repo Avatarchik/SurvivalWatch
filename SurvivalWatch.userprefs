@@ -1,10 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\watch.js">
     <Files>
-      <File FileName="Assets\Scripts\watch.js" Line="129" Column="4" />
+      <File FileName="Assets\Scripts\watch.js" Line="14" Column="11" />
       <File FileName="Assets\Scripts\AppCode\AltWeatherApp.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\AppCode\DigitalTimeApp.js" Line="11" Column="2" />
+      <File FileName="Assets\Scripts\AppCode\DigitalTimeApp.js" Line="67" Column="46" />
       <File FileName="Assets\Scripts\AppCode\GPSApp.js" Line="5" Column="23" />
       <File FileName="Assets\Scripts\AppCode\CompassApp.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\AppCode\CalendarApp.js" Line="14" Column="2" />
